@@ -1,7 +1,11 @@
 class DemoAppController < ApplicationController
 
-  def example_page
-    responder_for(Pages::DemoApp::ExamplePage)
+  def first_page
+    responder_for(Pages::DemoApp::FirstPage)
+  end
+
+  def second_page
+    responder_for(Pages::DemoApp::SecondPage)
   end
 
 end
