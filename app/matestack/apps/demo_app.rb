@@ -11,17 +11,12 @@ class Apps::DemoApp < Matestack::Ui::App
         transition path: :first_page_path, text: 'First page'
         br
         transition path: :second_page_path, text: 'Second page'
+        br
+        transition path: :persons_path, text: 'All persons'
+        hr
       end
       main do
         page_content
-        ul do
-          @persons.each do |person|
-            li do
-              plain person.first_name
-              strong text: person.last_name
-            end
-          end
-        end
       end
     }
   end
