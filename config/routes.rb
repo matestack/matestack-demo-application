@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get '/first_page', to: 'demo_app#first_page'
   get '/second_page', to: 'demo_app#second_page'
 
-  resources :persons, only: [:index, :show]
+  resources :persons
 
 end

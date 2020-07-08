@@ -14,6 +14,7 @@ class Pages::DemoApp::Persons::Index < Matestack::Ui::Page
 					end
 				end
 			end
+			transition path: :new_person_path, text: 'Create new person'
 		}
 	end
 
