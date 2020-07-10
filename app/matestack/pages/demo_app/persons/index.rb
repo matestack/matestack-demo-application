@@ -5,11 +5,13 @@ class Pages::DemoApp::Persons::Index < Matestack::Ui::Page
     person_collection_id = "person-collection"
 
     current_filter = get_collection_filter(person_collection_id)
+		current_order = get_collection_order(person_collection_id)
 
-    person_query = Person.all
+		person_query = Person.all
 
     filtered_person_query = person_query
     .where("last_name LIKE ?", "%#{current_filter[:last_name]}%")
+		.order(current_order)
 
     @person_collection = set_collection({
       id: person_collection_id,
@@ -23,6 +25,7 @@ class Pages::DemoApp::Persons::Index < Matestack::Ui::Page
   def response
     components {
       partial :filter
+			partial :ordering
 
       async rerender_on: "person-collection-update" do
         partial :content
@@ -45,6 +48,22 @@ class Pages::DemoApp::Persons::Index < Matestack::Ui::Page
       end
     }
   end
+
+	def ordering
+		partial {
+			collection_order @person_collection.config do
+
+				plain "sort by:"
+				collection_order_toggle key: :last_name do
+					button do
+						plain "last_name"
+						collection_order_toggle_indicator key: :last_name, asc: '(A-Z)', desc: '(Z-A)'
+					end
+				end
+
+			end
+		}
+	end
 
   def content
     partial {
