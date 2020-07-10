@@ -13,7 +13,10 @@ class Pages::DemoApp::Persons::Index < Matestack::Ui::Page
 
     @person_collection = set_collection({
       id: person_collection_id,
-      data: filtered_person_query
+      data: filtered_person_query,
+			init_limit: 3,
+			filtered_count: filtered_person_query.count,
+			base_count: person_query.count
     })
   end
 
@@ -48,7 +51,8 @@ class Pages::DemoApp::Persons::Index < Matestack::Ui::Page
       collection_content @person_collection.config do
 
         ul do
-          @person_collection.data.each do |person|
+					@person_collection.paginated_data.each do |person|
+
             li do
               plain "#{person.first_name} #{person.last_name} "
               transition path: :person_path, params: {id: person.id}, text: '(Details)'
@@ -56,8 +60,32 @@ class Pages::DemoApp::Persons::Index < Matestack::Ui::Page
           end
         end
 
+				partial :paginator
       end
     }
   end
+
+	def paginator
+		partial {
+			plain "showing #{@person_collection.from}"
+			plain "to #{@person_collection.to}"
+			plain "of #{@person_collection.filtered_count}"
+			plain "from total #{@person_collection.base_count}"
+
+			collection_content_previous do
+				button text: "previous"
+			end
+
+			@person_collection.pages.each do |page|
+				collection_content_page_link page: page do
+					button text: page
+				end
+			end
+
+			collection_content_next do
+				button text: "next"
+			end
+		}
+	end
 
 end
