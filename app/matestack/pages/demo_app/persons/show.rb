@@ -14,6 +14,7 @@ class Pages::DemoApp::Persons::Show < Matestack::Ui::Page
         button text: 'Delete person'
       end
       partial :other_persons
+      custom_person_activity
     }
   end
 

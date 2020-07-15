@@ -18,3 +18,4 @@ require("channels")
 
 import MatestackUiCore from 'matestack-ui-core'
 import '../../../app/matestack/components/person/disclaimer'
+import '../../../app/matestack/components/person/activity'
