@@ -17,6 +17,7 @@ class Apps::DemoApp < Matestack::Ui::App
       end
       main do
         page_content
+        custom_person_disclaimer
       end
     }
   end

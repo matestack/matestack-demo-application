@@ -1,5 +1,9 @@
 class Pages::DemoApp::Persons::Show < Matestack::Ui::Page
 
+  def prepare
+    @other_persons = Person.where.not(id: @person.id).order("RANDOM()").limit(3)
+  end
+
   def response
     components {
       transition path: :persons_path, text: 'Back to index'
@@ -8,6 +12,16 @@ class Pages::DemoApp::Persons::Show < Matestack::Ui::Page
       transition path: :edit_person_path, params: { id: @person.id }, text: 'Edit'
       action delete_person_config do
         button text: 'Delete person'
+      end
+      partial :other_persons
+    }
+  end
+
+  def other_persons
+    partial {
+      heading size: 3, text: 'Three other persons:'
+      @other_persons.each do |person|
+        custom_person_card person: person
       end
     }
   end

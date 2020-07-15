@@ -68,17 +68,9 @@ class Pages::DemoApp::Persons::Index < Matestack::Ui::Page
   def content
     partial {
       collection_content @person_collection.config do
-
-        ul do
-					@person_collection.paginated_data.each do |person|
-
-            li do
-              plain "#{person.first_name} #{person.last_name} "
-              transition path: :person_path, params: {id: person.id}, text: '(Details)'
-            end
-          end
+				@person_collection.paginated_data.each do |person|
+          custom_person_card person: person
         end
-
 				partial :paginator
       end
     }
