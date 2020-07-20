@@ -7,7 +7,10 @@ class Apps::DemoApp < Matestack::Ui::App
   def response
     components {
       partial :navigation
-      main do
+      div id: 'spinner', class: 'spinner-border', role: 'status' do
+        span class: 'sr-only', text: 'Loading...'
+      end
+      main id: 'page-content' do
         custom_person_disclaimer
         page_content
       end

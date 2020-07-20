@@ -10,6 +10,7 @@ require("channels")
 
 import 'css/custom-bootstrap'
 import 'css/application'
+import 'css/loading-spinner'
 
 import 'jquery'
 import 'popper.js'
@@ -25,3 +26,4 @@ import 'bootstrap'
 import MatestackUiCore from 'matestack-ui-core'
 import '../../matestack/components/person/disclaimer'
 import '../../matestack/components/person/activity'
+import 'animations/loading-spinner'
