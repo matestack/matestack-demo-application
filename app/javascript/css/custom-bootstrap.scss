@@ -1,1 +1,10 @@
+$body-bg: ghostwhite;
+$body-color: #101;
+
+$theme-colors: (
+  "primary": purple,
+  "info": darkcyan,
+  "warning": darkred
+);
+
 @import "~bootstrap/scss/bootstrap.scss";

@@ -24,26 +24,38 @@ class Pages::DemoApp::Persons::Index < Matestack::Ui::Page
 
   def response
     components {
-      partial :filter
-			partial :ordering
-
-      async rerender_on: "person-collection-update" do
-        partial :content
+      section id: 'persons-filter-order' do
+        div class: 'container' do
+          div class: 'row' do
+            div class: 'offset-md-1 col-md-5' do
+              partial :filter
+            end
+            div class: 'col-md-5' do
+              partial :ordering
+            end
+          end
+        end
       end
 
-      transition path: :new_person_path, text: 'Create new person'
+      section id: 'persons-collection' do
+        div class: 'container' do
+          async rerender_on: 'person-collection-update' do
+            partial :content
+          end
+        end
+      end
     }
   end
 
   def filter
     partial {
       collection_filter @person_collection.config do
-        collection_filter_input key: :last_name, type: :text, placeholder: "Filter by Last name"
+        collection_filter_input key: :last_name, type: :text, placeholder: 'Filter by Last name'
         collection_filter_submit do
-          button text: "Apply"
+          button class: 'btn btn-primary', text: 'Apply'
         end
         collection_filter_reset do
-          button text: "Reset"
+          button class: 'btn btn-primary', text: 'Reset'
         end
       end
     }
@@ -52,15 +64,12 @@ class Pages::DemoApp::Persons::Index < Matestack::Ui::Page
 	def ordering
 		partial {
 			collection_order @person_collection.config do
-
-				plain "sort by:"
+				plain 'Sorted by:'
 				collection_order_toggle key: :last_name do
-					button do
-						plain "last_name"
-						collection_order_toggle_indicator key: :last_name, asc: '(A-Z)', desc: '(Z-A)'
+					button class: 'btn btn-primary' do
+						collection_order_toggle_indicator key: :last_name, asc: 'Last name (A-Z)', desc: 'Last name (Z-A)', default: 'Date of creation'
 					end
 				end
-
 			end
 		}
 	end
@@ -68,34 +77,52 @@ class Pages::DemoApp::Persons::Index < Matestack::Ui::Page
   def content
     partial {
       collection_content @person_collection.config do
-				@person_collection.paginated_data.each do |person|
-          custom_person_card person: person
+        div class: 'row' do
+  				@person_collection.paginated_data.each do |person|
+            div class: 'col-md-4' do
+              custom_person_card person: person
+            end
+          end
+          div class: 'col-md-12 text-center my-3' do
+            transition path: :new_person_path, class: 'my-3 btn btn-info', text: 'Create new person'
+          end
+  				partial :paginator
         end
-				partial :paginator
       end
     }
   end
 
 	def paginator
 		partial {
-			plain "showing #{@person_collection.from}"
-			plain "to #{@person_collection.to}"
-			plain "of #{@person_collection.filtered_count}"
-			plain "from total #{@person_collection.base_count}"
-
-			collection_content_previous do
-				button text: "previous"
-			end
-
-			@person_collection.pages.each do |page|
-				collection_content_page_link page: page do
-					button text: page
-				end
-			end
-
-			collection_content_next do
-				button text: "next"
-			end
+      div class: 'container' do
+        div class: 'row' do
+          div class: 'col-md-12 text-center mt-5' do
+            plain "Showing persons #{@person_collection.from}"
+            plain "to #{@person_collection.to}"
+            plain "of #{@person_collection.filtered_count}"
+            plain "from a total of #{@person_collection.base_count} records."
+            ul class: 'pagination' do
+              li class: 'page-item' do
+                collection_content_previous do
+                  button class: 'page-link', text: 'previous'
+                end
+              end
+              @person_collection.pages.each do |page|
+                li class: 'page-item' do
+                  collection_content_page_link page: page do
+                    button class: 'page-link', text: page
+                  end
+                end
+              end
+              li class: 'page-item' do
+                collection_content_next do
+                  button class: 'page-link', text: 'next'
+                end
+              end
+            end
+          end
+        end
+      end
 		}
 	end
 

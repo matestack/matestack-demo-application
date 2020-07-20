@@ -6,13 +6,23 @@ class Pages::DemoApp::Persons::Show < Matestack::Ui::Page
 
   def response
     components {
-      transition path: :persons_path, text: 'Back to index'
-      heading size: 2, text: "Name: #{@person.first_name} #{@person.last_name}"
-      paragraph text: "Role: #{@person.role}"
-      transition path: :edit_person_path, params: { id: @person.id }, text: 'Edit'
-      action delete_person_config do
-        button text: 'Delete person'
+      section do
+        div class: 'container' do
+          transition path: :persons_path, class: 'btn btn-secondary', text: 'Back to index'
+
+          div class: 'row' do
+            div class: 'col-md-6 offset-md-3 text-center' do
+              heading size: 2, text: "Name: #{@person.first_name} #{@person.last_name}"
+              paragraph text: "Role: #{@person.role}"
+              transition path: :edit_person_path, params: { id: @person.id }, class: 'btn btn-secondary', text: 'Edit'
+              action delete_person_config do
+                button class: 'btn btn-warning', text: 'Delete person'
+              end
+            end
+          end
+        end
       end
+
       partial :other_persons
       custom_person_activity
     }
@@ -20,9 +30,19 @@ class Pages::DemoApp::Persons::Show < Matestack::Ui::Page
 
   def other_persons
     partial {
-      heading size: 3, text: 'Three other persons:'
-      @other_persons.each do |person|
-        custom_person_card person: person
+      section do
+        div class: 'container' do
+          div class: 'row' do
+            div class: 'col-md-12 text-center' do
+              heading size: 3, text: 'Three other persons:'
+            end
+            @other_persons.each do |person|
+              div class: 'col-md-4' do
+                custom_person_card person: person
+              end
+            end
+          end
+        end
       end
     }
   end
