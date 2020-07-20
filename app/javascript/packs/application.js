@@ -17,5 +17,5 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import MatestackUiCore from 'matestack-ui-core'
-import '../../../app/matestack/components/person/disclaimer'
-import '../../../app/matestack/components/person/activity'
+import '../../matestack/components/person/disclaimer'
+import '../../matestack/components/person/activity'
