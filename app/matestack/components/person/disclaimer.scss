@@ -1,0 +1,14 @@
+#disclaimer {
+  background-color: grey;
+  padding: 0.7rem 0;
+  .btn {
+    margin-left: 2rem;
+    margin-bottom: 2px;
+    @include media-breakpoint-down(md) {
+      display: block;
+      margin-top: 5px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
