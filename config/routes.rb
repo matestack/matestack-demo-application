@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   root to: 'persons#index'
 
   get '/first_page', to: 'demo_app#first_page'
