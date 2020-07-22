@@ -38,7 +38,7 @@ class Pages::DemoApp::Persons::Show < Matestack::Ui::Page
             end
             @other_persons.each do |person|
               div class: 'col-md-4' do
-                custom_person_card person: person
+                custom_person_card person: person, path: :person_path
               end
             end
           end

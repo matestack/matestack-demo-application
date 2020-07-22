@@ -80,7 +80,7 @@ class Pages::DemoApp::Persons::Index < Matestack::Ui::Page
         div class: 'row' do
   				@person_collection.paginated_data.each do |person|
             div class: 'col-md-4' do
-              custom_person_card person: person
+              custom_person_card person: person, path: :person_path
             end
           end
           div class: 'col-md-12 text-center my-3' do

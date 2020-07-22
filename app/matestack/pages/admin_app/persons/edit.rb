@@ -27,7 +27,7 @@ class Pages::AdminApp::Persons::Edit < Matestack::Ui::Page
                   end
                 end
                 form_submit do
-                  transition path: :person_path, params: { id: @person.id }, class: 'btn btn-secondary my-3', text: 'Back to detail page'
+                  transition path: :admin_person_path, params: { id: @person.id }, class: 'btn btn-secondary my-3', text: 'Back to detail page'
                   button class: 'btn btn-primary', text: 'Save changes'
                 end
               end
@@ -42,7 +42,7 @@ class Pages::AdminApp::Persons::Edit < Matestack::Ui::Page
     {
       for: @person,
       method: :patch,
-      path: :person_path,
+      path: :admin_person_path,
       params: {
         id: @person.id
       },

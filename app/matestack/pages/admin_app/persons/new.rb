@@ -46,7 +46,7 @@ class Pages::AdminApp::Persons::New < Matestack::Ui::Page
     {
       for: @person,
       method: :post,
-      path: :persons_path,
+      path: :admin_persons_path,
       success: {
         transition: {
           follow_response: true

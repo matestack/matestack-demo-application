@@ -14,7 +14,7 @@ class Pages::AdminApp::Persons::Show < Matestack::Ui::Page
             div class: 'col-md-6 offset-md-3 text-center' do
               heading size: 2, text: "Name: #{@person.first_name} #{@person.last_name}"
               paragraph text: "Role: #{@person.role}"
-              transition path: :edit_person_path, params: { id: @person.id }, class: 'btn btn-secondary', text: 'Edit'
+              transition path: :edit_admin_person_path, params: { id: @person.id }, class: 'btn btn-secondary', text: 'Edit'
               action delete_person_config do
                 button class: 'btn btn-warning', text: 'Delete person'
               end
@@ -38,7 +38,7 @@ class Pages::AdminApp::Persons::Show < Matestack::Ui::Page
             end
             @other_persons.each do |person|
               div class: 'col-md-4' do
-                custom_person_card person: person
+                custom_person_card person: person, path: :admin_person_path
               end
             end
           end
@@ -50,7 +50,7 @@ class Pages::AdminApp::Persons::Show < Matestack::Ui::Page
   def delete_person_config
     return {
       method: :delete,
-      path: :person_path,
+      path: :admin_person_path,
       params: {
         id: @person.id
       },

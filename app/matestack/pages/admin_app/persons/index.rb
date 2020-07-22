@@ -80,11 +80,11 @@ class Pages::AdminApp::Persons::Index < Matestack::Ui::Page
         div class: 'row' do
   				@person_collection.paginated_data.each do |person|
             div class: 'col-md-4' do
-              custom_person_card person: person
+              custom_person_card person: person, path: :admin_person_path
             end
           end
           div class: 'col-md-12 text-center my-3' do
-            transition path: :new_person_path, class: 'my-3 btn btn-info', text: 'Create new person'
+            transition path: :new_admin_person_path, class: 'my-3 btn btn-info', text: 'Create new person'
           end
   				partial :paginator
         end
