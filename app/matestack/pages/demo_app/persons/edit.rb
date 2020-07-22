@@ -20,12 +20,6 @@ class Pages::DemoApp::Persons::Edit < Matestack::Ui::Page
                     form_input key: :last_name, class: 'form-control', type: :text
                   end
                 end
-                div class: 'form-group row' do
-                  label class: 'col-sm-4 col-form-label col-form-label-md', text: 'Person role:'
-                  div class: 'col-sm-8' do
-                    form_select key: :role, type: :dropdown, class: 'form-control', options: Person.roles.keys, init: @person.role
-                  end
-                end
                 form_submit do
                   transition path: :person_path, params: { id: @person.id }, class: 'btn btn-secondary my-3', text: 'Back to detail page'
                   button class: 'btn btn-primary', text: 'Save changes'

@@ -30,6 +30,9 @@ class Apps::DemoApp < Matestack::Ui::App
               li class: 'nav-item' do
                 transition class: 'nav-link', path: :persons_path, text: 'All persons'
               end
+              li class: 'nav-item' do
+                link class: 'nav-link', path: :new_admin_session_path, text: 'Admin Login'
+              end
             end
           end
         end

@@ -24,12 +24,6 @@ class Pages::DemoApp::Persons::New < Matestack::Ui::Page
                     form_input key: :last_name, class: 'form-control', type: :text
                   end
                 end
-                div class: 'form-group row' do
-                  label class: 'col-sm-4 col-form-label col-form-label-md', text: 'Person role:'
-                  div class: 'col-sm-8' do
-                    form_select key: :role, type: :dropdown, class: 'form-control', options: Person.roles.keys, init: Person.roles.keys.first
-                  end
-                end
                 form_submit do
                   transition path: :persons_path, class: 'btn btn-secondary my-3', text: 'Back to index page'
                   button class: 'btn btn-primary', text: 'Create person'
