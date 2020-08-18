@@ -1,20 +1,22 @@
 class PersonsController < ApplicationController
-  before_action :set_person, only: [:show, :edit, :update, :destroy]
+  matestack_app Demo::App
+
+  before_action :find_person, only: [:show, :edit, :update, :destroy]
 
   def new
-    responder_for(Pages::DemoApp::Persons::New)
+    render Demo::Pages::Persons::New
   end
 
   def index
-    responder_for(Pages::DemoApp::Persons::Index)
+    render Demo::Pages::Persons::Index
   end
 
   def show
-    responder_for(Pages::DemoApp::Persons::Show)
+    render Demo::Pages::Persons::Show
   end
 
   def edit
-    responder_for(Pages::DemoApp::Persons::Edit)
+    render Demo::Pages::Persons::Edit
   end
 
   def update
@@ -50,7 +52,7 @@ class PersonsController < ApplicationController
 
   protected
 
-  def set_person
+  def find_person
     @person = Person.find_by(id: params[:id])
   end
 

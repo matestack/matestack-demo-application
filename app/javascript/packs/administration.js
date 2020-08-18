@@ -24,7 +24,6 @@ import 'bootstrap'
 // const imagePath = (name) => images(name, true)
 
 import MatestackUiCore from 'matestack-ui-core'
-import '../../matestack/components/person/disclaimer'
-import '../../matestack/components/person/activity'
+import '../../matestack/components/persons/activity'
 import 'animations/loading-spinner'
 import 'events/reload-page'

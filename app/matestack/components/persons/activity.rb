@@ -1,4 +1,4 @@
-class Components::Person::Activity < Matestack::Ui::DynamicComponent
+class Components::Persons::Activity < Matestack::Ui::DynamicComponent
 
   def response
     components {

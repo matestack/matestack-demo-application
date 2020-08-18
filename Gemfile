@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'matestack-ui-core'
+gem 'matestack-ui-core', git: 'https://github.com/matestack/matestack-ui-core.git', branch: 'next-release'
 gem 'devise'
 
 group :development, :test do
