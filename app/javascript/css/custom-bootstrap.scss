@@ -1,4 +1,5 @@
 $darkest-orange: #FF3B14;
+$light-orange: #fecdc3;
 
 $lightest-grey: #F4F4F5;
 $dark-grey: #A4A4AE;
@@ -13,9 +14,10 @@ $body-color: $darkest-grey;
 $theme-colors: (
   "primary": $darkest-orange,
   "secondary": $darker-blue,
-  "info": $darkest-grey,
+  "info": $light-orange,
   "warning": $dark-grey,
-  "dark": $darkest-blue
+  "dark": $darkest-blue,
+  "light": $lightest-grey,
 );
 
 @import "~bootstrap/scss/bootstrap.scss";

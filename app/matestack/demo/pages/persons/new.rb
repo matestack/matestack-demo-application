@@ -1,13 +1,15 @@
 class Demo::Pages::Persons::New < Demo::Pages::Persons::Form
 
   def response
-    section do
-      div class: 'container' do
-        div class: 'row' do
-          div class: 'col-md-6 offset-md-3 text-center' do
-            heading size: 2, text: 'Create new person'
-            person_form 'Create person'
-          end
+    jumbotron_header title: 'Create a new person'
+
+    div class: 'container  mb-5 pb-5 overlap-container' do
+      div class: 'shadow'
+      div class: 'row' do
+        div class: 'col-12 pt-3' do
+          paragraph class: 'alert alert-info pb-3',
+            text: 'Enter a first name, last name and select a role. Hit "Create person" in order to save your new person.'
+          person_form 'Create person', persons_path
         end
       end
     end

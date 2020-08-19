@@ -21,15 +21,11 @@ class Demo::Pages::Persons::Index < Matestack::Ui::Page
   end
 
   def response
-    div class: 'jumbotron jumbotron-fluid text-secondary', 
-      attributes: { style: "background-image: url('#{image_path('background')}');" } do
-      div class: 'container py-5' do
-        heading text: 'All your persons', class: 'pt-5'
-      end
-    end
+    jumbotron_header title: 'All your persons'
   
-    div class: 'container' do
-      div class: 'row' do
+    div class: 'container overlap-container' do
+      div class: 'shadow'
+      div class: 'row pt-4' do
         div class: 'col-md-8' do
           filter
         end
@@ -37,10 +33,17 @@ class Demo::Pages::Persons::Index < Matestack::Ui::Page
           ordering
         end
       end
-    end
-    div class: 'container' do
       async rerender_on: 'person-collection-update' do
         content
+      end
+    end
+
+    div class: 'jumbotron jumbotron-fluid text-secondary mt-5 text-center mb-0' do
+      div class: 'container py-3' do
+        heading text: 'You know another person?'
+        div class: 'col-md-12 text-center my-3' do
+          transition path: new_person_path, class: 'my-3 btn btn-primary btn-lg', text: 'Add one'
+        end
       end
     end
   end
@@ -82,9 +85,6 @@ class Demo::Pages::Persons::Index < Matestack::Ui::Page
       end
       div class: 'row' do
         paginator
-        div class: 'col-md-12 text-center my-3' do
-          transition path: new_person_path, class: 'my-3 btn btn-info', text: 'Create new person'
-        end
       end
     end
   end
@@ -97,7 +97,9 @@ class Demo::Pages::Persons::Index < Matestack::Ui::Page
       ul class: 'pagination' do
         li class: 'page-item' do
           collection_content_previous do
-            button class: 'page-link', text: 'previous'
+            div class: 'page-link' do
+              span attributes: { 'aria-hidden': true }, text: '&laquo;'.html_safe
+            end
           end
         end
         @person_collection.pages.each do |page|
@@ -109,7 +111,9 @@ class Demo::Pages::Persons::Index < Matestack::Ui::Page
         end
         li class: 'page-item' do
           collection_content_next do
-            button class: 'page-link', text: 'next'
+            div class: 'page-link' do
+              span attributes: { 'aria-hidden': true }, text: '&raquo;'.html_safe
+            end
           end
         end
       end

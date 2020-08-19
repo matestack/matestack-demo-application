@@ -1,13 +1,15 @@
 class Demo::Pages::Persons::Edit < Demo::Pages::Persons::Form
 
   def response
-    section do
-      div class: 'container' do
-        div class: 'row' do
-          div class: 'col-md-6 offset-md-3 text-center' do
-            heading size: 2, text: "Edit Person: #{@person.first_name} #{@person.last_name}"
-            person_form 'Save changes'
-          end
+    jumbotron_header title: "Edit #{@person.first_name} #{@person.last_name}"
+
+    div class: 'container  mb-5 pb-5 overlap-container' do
+      div class: 'shadow'
+      div class: 'row' do
+        div class: 'col-12 pt-3' do
+          paragraph text: 'Change everything you want. Hit "Save changes" in order to save your changes.', 
+            class: 'alert alert-info pb-3'
+          person_form 'Save changes', person_path(@person)
         end
       end
     end
@@ -19,7 +21,7 @@ class Demo::Pages::Persons::Edit < Demo::Pages::Persons::Form
     {
       for: @person,
       method: :patch,
-      path: :person_path,
+      path: person_path,
       params: {
         id: @person.id
       },
