@@ -1,4 +1,4 @@
-MatestackUiCore.Vue.component('custom-person-activity', {
+MatestackUiCore.Vue.component('person-activity', {
   mixins: [MatestackUiCore.componentMixin],
   data() {
     return {

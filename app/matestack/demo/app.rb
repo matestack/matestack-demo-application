@@ -1,9 +1,5 @@
 class Demo::App < Matestack::Ui::App
 
-  def prepare
-    @persons = Person.all
-  end
-
   def response
     navigation
     div id: 'spinner', class: 'spinner-border', role: 'status' do

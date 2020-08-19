@@ -16,6 +16,12 @@ class Demo::Pages::Persons::Form < Matestack::Ui::Page
           form_input key: :last_name, class: 'form-control', type: :text
         end
       end
+      div class: 'form-group row' do
+        label class: 'col-md-3 col-sm-4 col-form-label col-form-label-md', text: 'Role:'
+        div class: 'col-md-9 col-sm-8' do
+          form_radio key: :role, options: Person.roles.keys
+        end
+      end
       form_submit do
         button class: 'btn btn-primary', text: button_text
       end

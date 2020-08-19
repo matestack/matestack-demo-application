@@ -12,9 +12,9 @@ class Demo::Pages::Persons::Show < Matestack::Ui::Page
         person_role
       end
       person_more_information
+      person_activity
     end
 
-    person_activity
   end
 
   private
