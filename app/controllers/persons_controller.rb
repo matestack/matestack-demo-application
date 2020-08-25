@@ -1,6 +1,6 @@
 class PersonsController < ApplicationController
-  matestack_app Demo::App
 
+  matestack_app Demo::App
   before_action :find_person, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -20,25 +20,19 @@ class PersonsController < ApplicationController
   end
 
   def update
-    @person.update person_params
-
-    @person.save
-    if @person.errors.any?
-      render json: {errors: @person.errors}, status: :unprocessable_entity
-    else
+    if @person.update person_params
       render json: { transition_to: person_path(id: @person.id) }, status: :ok
+    else
+      render json: {errors: @person.errors}, status: :unprocessable_entity
     end
   end
 
   def create
-    @person = Person.new(person_params)
-    p @person
-    @person.save
-
-    if @person.errors.any?
-      render json: {errors: @person.errors}, status: :unprocessable_entity
+    person = Person.create(person_params)
+    if person.valid?
+      render json: { transition_to: person_path(id: person.id) }, status: :created
     else
-      render json: { transition_to: person_path(id: @person.id) }, status: :created
+      render json: {errors: person.errors}, status: :unprocessable_entity
     end
   end
 

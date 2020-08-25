@@ -2,12 +2,9 @@ class Demo::App < Matestack::Ui::App
 
   def response
     navigation
-    div id: 'spinner', class: 'spinner-border', role: 'status' do
-      span class: 'sr-only', text: 'Loading...'
-    end
     main id: 'page-content' do
       person_disclaimer
-      page_content
+      yield_page slots: { loading_state: loading_state_element }
     end
     footer
   end
@@ -16,15 +13,15 @@ class Demo::App < Matestack::Ui::App
 
   def navigation
     nav class: 'navbar navbar-expand-md navbar-light bg-white fixed-top' do
-      transition class: 'navbar-brand font-weight-bold text-primary', path: root_path, text: 'DemoApp'
+      transition class: 'navbar-brand font-weight-bold text-primary', path: root_path, text: 'DemoApp', delay: 300
       navbar_button
       div id: 'navbar-default', class: 'collapse navbar-collapse' do
         ul class: 'navbar-nav mr-auto' do
           li class: 'nav-item' do
-            transition class: 'nav-link text-dark', path: persons_path, text: 'Persons'
+            transition class: 'nav-link text-dark', path: persons_path, text: 'Persons', delay: 300
           end
           li class: 'nav-item' do
-            transition class: 'nav-link text-dark', path: new_person_path, text: 'New'
+            transition class: 'nav-link text-dark', path: new_person_path, text: 'New', delay: 300
           end
           li class: 'nav-item' do
             link class: 'nav-link text-secondary', path: new_admin_session_path, text: 'Login'
@@ -56,6 +53,14 @@ class Demo::App < Matestack::Ui::App
             text: 'This demo application and corresponding guides are provided by'
           img path: asset_path('matestack'), height: '48px'
         end
+      end
+    end
+  end
+
+  def loading_state_element
+    slot do
+      div id: 'spinner', class: 'spinner-border', role: 'status' do
+        span class: 'sr-only', text: 'Loading...'
       end
     end
   end

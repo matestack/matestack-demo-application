@@ -42,7 +42,7 @@ class Demo::Pages::Persons::Index < Matestack::Ui::Page
       div class: 'container py-3' do
         heading text: 'You know another person?'
         div class: 'col-md-12 text-center my-3' do
-          transition path: new_person_path, class: 'my-3 btn btn-primary btn-lg', text: 'Add one'
+          transition path: new_person_path, class: 'my-3 btn btn-primary btn-lg', text: 'Add one', delay: 300
         end
       end
     end

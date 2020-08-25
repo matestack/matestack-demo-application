@@ -27,7 +27,7 @@ class Demo::Pages::Persons::Show < Matestack::Ui::Page
       heading size: 2, text: "#{@person.first_name} #{@person.last_name}", class: 'my-0'
     end
     div class: 'col-sm-4 d-flex justify-content-end align-items-center' do
-      transition path: edit_person_path(@person), class: 'btn btn-primary mr-2', text: 'Edit'
+      transition path: edit_person_path(@person), class: 'btn btn-primary mr-2', text: 'Edit', delay: 300
       action delete_person_config do
         button class: 'btn btn-secondary', text: 'Delete'
       end
@@ -75,7 +75,8 @@ class Demo::Pages::Persons::Show < Matestack::Ui::Page
       path: person_path(@person),
       success: {
         transition: {
-          follow_response: true
+          follow_response: true, 
+          delay: 300
         }
       }
     }

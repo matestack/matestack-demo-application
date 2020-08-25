@@ -19,7 +19,7 @@ class Admin::Pages::Persons::Index < Matestack::Ui::Page
   def response
     div class: 'container my-5' do
       div class: 'text-right' do 
-        transition class: 'btn btn-success mb-3', text: '+ New person', path: new_admin_person_path
+        transition class: 'btn btn-success mb-3', text: '+ New person', path: new_admin_person_path, delay: 300
       end
       filter
       async id: 'collection', rerender_on: 'persons-collection-update' do 
@@ -64,7 +64,7 @@ class Admin::Pages::Persons::Index < Matestack::Ui::Page
       tr do
         td text: person.id
         td do
-          transition path: edit_admin_person_path(person), text: person.last_name, class: 'text-dark font-weight-bold'
+          transition path: edit_admin_person_path(person), text: person.last_name, class: 'text-dark font-weight-bold', delay: 300
         end
         td text: person.first_name
         td text: person.role

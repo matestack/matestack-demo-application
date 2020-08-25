@@ -27,7 +27,8 @@ class Demo::Pages::Persons::Edit < Demo::Pages::Persons::Form
       },
       success: {
         transition: {
-          follow_response: true
+          follow_response: true, 
+          delay: 300
         }
       }
     }

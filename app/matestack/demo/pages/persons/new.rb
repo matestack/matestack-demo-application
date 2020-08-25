@@ -24,7 +24,8 @@ class Demo::Pages::Persons::New < Demo::Pages::Persons::Form
       path: persons_path,
       success: {
         transition: {
-          follow_response: true
+          follow_response: true, 
+          delay: 300
         }
       }
     }

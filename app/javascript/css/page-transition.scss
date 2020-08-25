@@ -1,0 +1,27 @@
+//ANIMATIONS
+
+.matestack-page-container{
+  .loading-state-element-wrapper{
+    position: fixed;
+    height: 40px;
+    width: 40px;
+    left: calc(50vw - 20px);
+    top: calc(50vh - 20px);
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out;
+
+    &.loading {
+      opacity: 1;
+    }
+  }
+
+  .matestack-page-wrapper {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+
+    &.loading {
+      opacity: 0;
+    }
+  }
+}

@@ -25,7 +25,7 @@ class Demo::Pages::Persons::Form < Matestack::Ui::Page
       form_submit do
         button class: 'btn btn-primary', text: button_text
       end
-      transition path: cancel_path, class: 'btn btn-secondary my-3', text: 'Cancel'
+      transition path: cancel_path, class: 'btn btn-secondary my-3', text: 'Cancel', delay: 300
     end
   end
 

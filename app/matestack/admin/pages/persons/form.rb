@@ -13,8 +13,8 @@ class Admin::Pages::Persons::Form < Matestack::Ui::Page
       form_group label: 'Last name:' do
         form_select key: :role, type: :dropdown, class: 'form-control', options: Person.roles.keys
       end
+      transition path: admin_persons_path, class: 'btn btn-secondary my-3', text: 'Cancel', delay: 300
       form_submit do
-        transition path: admin_persons_path, class: 'btn btn-secondary my-3', text: 'Cancel'
         button class: 'btn btn-primary', text: save_button
       end
     end

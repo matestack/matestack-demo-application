@@ -23,7 +23,8 @@ class Admin::Pages::Persons::New < Admin::Pages::Persons::Form
       success: {
         emit: 'person_form_success',
         transition: {
-          follow_response: true
+          follow_response: true,
+          delay: 300
         }
       },
       failure: {

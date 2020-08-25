@@ -3,9 +3,8 @@ class Admin::App < Matestack::Ui::App
   def response
     navigation
     notifications
-    loading_spinner
     main id: 'page-content' do
-      yield_page
+      yield_page slots: { loading_state: loading_state_element }
     end
     footer
   end
@@ -14,7 +13,7 @@ class Admin::App < Matestack::Ui::App
 
   def navigation
     nav class: 'navbar navbar-expand-md navbar-dark bg-dark fixed-top' do
-      transition class: 'navbar-brand font-weight-bold', path: root_path, text: 'AdminApp'
+      transition class: 'navbar-brand font-weight-bold', path: root_path, text: 'AdminApp', delay: 300
       if admin_signed_in?
         navbar_toggle_button
         div id: 'navbar', class: 'collapse navbar-collapse justify-content-end' do
@@ -39,13 +38,16 @@ class Admin::App < Matestack::Ui::App
   def navbar_right
     ul class: 'navbar-nav mr-0' do
       li class: 'nav-item' do
-        transition class: 'nav-link text-light', path: admin_persons_path, text: 'All persons'
+        transition class: 'nav-link text-light', path: admin_persons_path, text: 'All persons', delay: 300
       end
     end
   end
 
   def navbar_left
     ul class: 'navbar-nav mr-0' do
+      li class: 'nav-item' do
+        link class: 'nav-link text-light mr-3', path: persons_path, text: 'Demo App', delay: 300
+      end
       li class: 'nav-item' do
         action logout_action_config do
           span class: 'btn-nav btn btn-primary', text: I18n.t('devise.sessions.logout')
@@ -54,9 +56,11 @@ class Admin::App < Matestack::Ui::App
     end
   end
 
-  def loading_spinner
-    div id: 'spinner', class: 'spinner-border', role: 'status' do
-      span class: 'sr-only', text: 'Loading...'
+  def loading_state_element
+    slot do
+      div id: 'spinner', class: 'spinner-border', role: 'status' do
+        span class: 'sr-only', text: 'Loading...'
+      end
     end
   end
 

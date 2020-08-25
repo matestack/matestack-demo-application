@@ -1,7 +1,7 @@
 class Admin::SessionsController < Devise::SessionsController
   include Admin::Components::Registry
-  matestack_app Admin::App
   
+  matestack_app Admin::App
   layout 'administration'
 
   def new

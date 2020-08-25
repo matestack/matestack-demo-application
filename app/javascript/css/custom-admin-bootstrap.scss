@@ -20,10 +20,6 @@ $theme-colors: (
   "light": $lightest-grey,
 );
 
-.nav-link {
-  white-space: nowrap;
-}
-
 @import "~bootstrap/scss/bootstrap.scss";
 
 .alert-wrapper {
@@ -31,9 +27,4 @@ $theme-colors: (
   position: fixed !important;
   top: 4.5rem;
   right: 1rem;
-}
-
-.errors {
-  display: block;
-  color: $darkest-orange;
 }

@@ -1,4 +1,5 @@
 class Admin::PersonsController < Admin::BaseController
+
   matestack_app Admin::App
   before_action :find_person, only: [:show, :edit, :update, :destroy]
 
@@ -24,7 +25,7 @@ class Admin::PersonsController < Admin::BaseController
 
   def create
     person = Person.create(person_params)
-    if person.save
+    if person.valid?
       render json: { transition_to: edit_admin_person_path(person) }, status: :created
     else
       render json: { errors: person.errors }, status: :unprocessable_entity

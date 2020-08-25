@@ -14,7 +14,7 @@ class Components::Persons::Teaser < Matestack::Ui::StaticComponent
             small text: "Created at: #{I18n.l(person.created_at, format: :short)}", class: 'd-block'
           end
           div do
-            transition text: 'Details', path: person_path(person), class: 'btn btn-primary float-right mt-3'
+            transition text: 'Details', path: person_path(person), class: 'btn btn-primary float-right mt-3', delay: 300
           end
         end
       end

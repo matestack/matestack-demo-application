@@ -1,4 +1,5 @@
 class DemoController < ApplicationController
+  
   matestack_app Demo::App
 
   def first_page
