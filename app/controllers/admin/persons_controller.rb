@@ -1,43 +1,33 @@
 class Admin::PersonsController < Admin::BaseController
-  layout 'administration'
-  before_action :set_person, only: [:show, :edit, :update, :destroy]
+  matestack_app Admin::App
+  before_action :find_person, only: [:show, :edit, :update, :destroy]
 
   def new
-    responder_for(Pages::AdminApp::Persons::New)
+    render Admin::Pages::Persons::New
   end
 
   def index
-    responder_for(Pages::AdminApp::Persons::Index)
-  end
-
-  def show
-    responder_for(Pages::AdminApp::Persons::Show)
+    render Admin::Pages::Persons::Index
   end
 
   def edit
-    responder_for(Pages::AdminApp::Persons::Edit)
+    render Admin::Pages::Persons::Edit
   end
 
   def update
-    @person.update person_params
-
-    @person.save
-    if @person.errors.any?
-      render json: {errors: @person.errors}, status: :unprocessable_entity
+    if @person.update person_params
+      render json: { }, status: :ok
     else
-      render json: { transition_to: person_path(id: @person.id) }, status: :ok
+      render json: { errors: @person.errors }, status: :unprocessable_entity
     end
   end
 
   def create
-    @person = Person.new(person_params)
-    p @person
-    @person.save
-
-    if @person.errors.any?
-      render json: {errors: @person.errors}, status: :unprocessable_entity
+    person = Person.create(person_params)
+    if person.save
+      render json: { transition_to: edit_admin_person_path(person) }, status: :created
     else
-      render json: { transition_to: person_path(id: @person.id) }, status: :created
+      render json: { errors: person.errors }, status: :unprocessable_entity
     end
   end
 
@@ -51,7 +41,7 @@ class Admin::PersonsController < Admin::BaseController
 
   protected
 
-  def set_person
+  def find_person
     @person = Person.find_by(id: params[:id])
   end
 

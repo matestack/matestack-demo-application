@@ -1,10 +1,39 @@
-$body-bg: ghostwhite;
-$body-color: #101;
+$darkest-orange: #FF3B14;
+$light-orange: #fecdc3;
+
+$lightest-grey: #F4F4F5;
+$dark-grey: #A4A4AE;
+$darkest-grey: #1B1D35;
+
+$darkest-blue: #1b1d35;
+$darker-blue:#606171;
+
+$body-bg: white;
+$body-color: $darkest-grey;
 
 $theme-colors: (
-  "primary": purple,
-  "info": darkcyan,
-  "warning": darkred
+  "primary": $darkest-orange,
+  "secondary": $darker-blue,
+  "info": $light-orange,
+  "warning": $dark-grey,
+  "dark": $darkest-blue,
+  "light": $lightest-grey,
 );
 
+.nav-link {
+  white-space: nowrap;
+}
+
 @import "~bootstrap/scss/bootstrap.scss";
+
+.alert-wrapper {
+  max-width: 300px;
+  position: fixed !important;
+  top: 4.5rem;
+  right: 1rem;
+}
+
+.errors {
+  display: block;
+  color: $darkest-orange;
+}

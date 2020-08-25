@@ -1,23 +1,18 @@
 class Admin::SessionsController < Devise::SessionsController
+  include Admin::Components::Registry
+  matestack_app Admin::App
+  
   layout 'administration'
-  before_action :configure_sign_in_params, only: [:create]
 
   def new
-    responder_for(Pages::AdminApp::Sessions::SignIn)
+    render Admin::Pages::Sessions::SignIn
   end
 
   def create
-    errors = {}
-    [:email, :password].each do |key|
-      errors[key] = ["Can't be blank"] if params[:admin][key].blank?
-    end
-    if errors.empty?
-      admin = warden.authenticate(auth_options)
-      sign_in(:admin, admin)
-      redirect_to admin_persons_path
-    else
-      render json: {errors: errors}, status: :unprocessable_entity
-    end
+    self.resource = warden.authenticate(auth_options)
+    return render json: {}, status: 401 unless resource
+    sign_in(resource_name, resource)
+    respond_with resource, location: after_sign_in_path_for(resource)
   end
 
   def destroy
@@ -25,10 +20,6 @@ class Admin::SessionsController < Devise::SessionsController
     redirect_to new_admin_session_path, status: :see_other #https://api.rubyonrails.org/classes/ActionController/Redirecting.html
   end
 
-  protected
-
-  def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  end
+  private
 
 end

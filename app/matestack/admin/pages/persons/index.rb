@@ -1,10 +1,10 @@
-class Pages::AdminApp::Persons::Index < Matestack::Ui::Page
+class Admin::Pages::Persons::Index < Matestack::Ui::Page
   include Matestack::Ui::Core::Collection::Helper
 
   def prepare
     person_collection_id = "persons-collection"
     current_filter = get_collection_filter(person_collection_id)
-    person_query = Person.all.order(last_name: :asc)
+    person_query = Person.all.order(id: :asc)
     filtered_person_query = person_query
       .where("last_name LIKE ?", "%#{current_filter[:last_name]}%")
     @person_collection = set_collection({
@@ -17,11 +17,14 @@ class Pages::AdminApp::Persons::Index < Matestack::Ui::Page
   end
 
   def response
-    div class: 'container' do
+    div class: 'container my-5' do
+      div class: 'text-right' do 
+        transition class: 'btn btn-success mb-3', text: '+ New person', path: new_admin_person_path
+      end
       filter
       async id: 'collection', rerender_on: 'persons-collection-update' do 
         collection_content @person_collection.config do
-          table class: 'table' do
+          table class: 'table table-striped table-light table-hover mt-3' do
             table_head
             table_body
           end
@@ -60,7 +63,9 @@ class Pages::AdminApp::Persons::Index < Matestack::Ui::Page
     @person_collection.paginated_data.each do |person|
       tr do
         td text: person.id
-        td text: person.last_name
+        td do
+          transition path: edit_admin_person_path(person), text: person.last_name, class: 'text-dark font-weight-bold'
+        end
         td text: person.first_name
         td text: person.role
       end
