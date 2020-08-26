@@ -70,7 +70,7 @@ class Admin::App < Matestack::Ui::App
         div class: 'd-flex align-items-center justify-content-center' do
           heading class: 'm-0 mr-1 font-weight-normal text-light', size: 5, 
             text: 'This demo application and corresponding guides are provided by'
-          img path: asset_path('matestack'), height: '48px'
+          img path: asset_path('matestack.png'), height: '48px'
         end
       end
     end
