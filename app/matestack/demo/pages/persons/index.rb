@@ -33,7 +33,7 @@ class Demo::Pages::Persons::Index < Matestack::Ui::Page
           ordering
         end
       end
-      async rerender_on: 'person-collection-update' do
+      async rerender_on: 'person-collection-update', id: 'person-collection' do
         content
       end
     end
@@ -94,7 +94,7 @@ class Demo::Pages::Persons::Index < Matestack::Ui::Page
       div class: 'p-2' do
         paginator_description
       end
-      ul class: 'pagination' do
+      ul class: 'pagination justify-content-center' do
         li class: 'page-item' do
           collection_content_previous do
             div class: 'page-link' do

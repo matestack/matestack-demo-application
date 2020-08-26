@@ -20,6 +20,4 @@ class Admin::SessionsController < Devise::SessionsController
     redirect_to new_admin_session_path, status: :see_other #https://api.rubyonrails.org/classes/ActionController/Redirecting.html
   end
 
-  private
-
 end

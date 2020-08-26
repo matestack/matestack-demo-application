@@ -15,7 +15,7 @@ class Components::Shared::JumbotronHeader < Matestack::Ui::Component
   def jumbotron_options
     {
       class: 'jumbotron jumbotron-fluid text-secondary', 
-      attributes: { style: "background-image: url('#{image_path('background')}');" }
+      style: "background-image: url('#{image_path('background')}');"
     }
   end
 

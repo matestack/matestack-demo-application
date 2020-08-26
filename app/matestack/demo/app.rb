@@ -33,13 +33,9 @@ class Demo::App < Matestack::Ui::App
 
   def navbar_button
     button(
-      class: 'navbar-toggler text-dark',
-      role: :button,
-      attributes: { 
-        "aria-controls": "navbar-default",
-        "aria-expanded": "false",
-        data: { target: '#navbar-default', toggle: :collapse }, 
-      }
+      class: 'navbar-toggler text-dark', role: :button,
+      data: { target: '#navbar-default', toggle: :collapse },
+      attributes: { "aria-controls": "navbar-default", "aria-expanded": "false" }
     ) do
       span class: 'navbar-toggler-icon text-dark'
     end

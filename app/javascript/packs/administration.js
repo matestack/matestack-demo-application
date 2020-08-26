@@ -24,4 +24,3 @@ import 'bootstrap'
 // const imagePath = (name) => images(name, true)
 
 import MatestackUiCore from 'matestack-ui-core'
-import '../../matestack/components/persons/activity'

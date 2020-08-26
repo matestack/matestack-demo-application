@@ -19,22 +19,25 @@ class Admin::Pages::Sessions::SignIn < Matestack::Ui::Page
 
   def login_form
     form form_config, :include do
-      div class: 'form-group row' do
-        label class: 'col-sm-12 col-form-label col-form-label-md', text: t('devise.sessions.new.email')
-        div class: 'col-sm-12' do
-          form_input key: :email, type: :text
-        end
+      form_group label: 'E-Mail'  do
+        form_input key: :email, type: :text
       end
-      div class: 'form-group row' do
-        label class: 'col-sm-12 col-form-label col-form-label-md', text: t('devise.sessions.new.password')
-        div class: 'col-sm-12' do
-          form_input key: :password, type: :password
-        end
+      form_group label: 'Password' do
+        form_input key: :password, type: :password
       end
       form_submit class: 'text-center d-block' do
-        button class: 'btn btn-primary text-center', text: I18n.t('devise.sessions.new.login')
+        button class: 'btn btn-primary text-center', text: 'Login'
       end
     end
+  end
+
+  def form_group(label: '', &block)
+    div class: 'form-group row' do
+        label class: 'col-sm-12 col-form-label col-form-label-md', text: label
+        div class: 'col-sm-12' do
+          yield
+        end
+      end
   end
 
   def form_config

@@ -4256,9 +4256,9 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-"matestack-ui-core@https://github.com/matestack/matestack-ui-core#next-release":
-  version "1.0.0-rc1"
-  resolved "https://github.com/matestack/matestack-ui-core#93651a7bef1da6d89b487ed838184f85c918854c"
+"matestack-ui-core@https://github.com/matestack/matestack-ui-core#master":
+  version "1.0.0-rc.1"
+  resolved "https://github.com/matestack/matestack-ui-core#68562db24dd7c44ad7a5cd64e1021dc7ea374155"
   dependencies:
     axios "^0.18.1"
     link-module-alias "^1.2.0"
@@ -7268,9 +7268,9 @@ vue-turbolinks@^2.1.0:
     vue "^2.2.4"
 
 vue@^2.2.4, vue@^2.5.17:
-  version "2.6.11"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
-  integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
+  integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
 
 vuex@^3.0.1:
   version "3.5.1"
