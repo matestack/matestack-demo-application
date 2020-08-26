@@ -5,10 +5,10 @@ class Admin::Pages::Persons::New < Admin::Pages::Persons::Form
   end
 
   def response
-    div class: 'container' do
+    div class: 'container my-5' do
       div class: 'row' do
         div class: 'col-md-6 offset-md-3 text-center' do
-          heading size: 2, text: 'Create new person'
+          heading size: 2, text: 'Create new person', class: 'my-3'
           person_form 'Create'
         end
       end

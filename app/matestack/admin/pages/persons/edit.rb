@@ -4,7 +4,7 @@ class Admin::Pages::Persons::Edit < Admin::Pages::Persons::Form
     div class: 'container my-5' do
       div class: 'row' do
         div class: 'col-md-6 offset-md-3 text-center' do
-          heading size: 2, text: "Edit Person: #{@person.first_name} #{@person.last_name}"
+          heading size: 2, text: "Edit Person: #{@person.first_name} #{@person.last_name}", class: 'my-3'
           person_form 'Save changes'
         end
       end
