@@ -56,6 +56,7 @@ class Admin::Pages::Persons::Index < Matestack::Ui::Page
       th text: 'Last name'
       th text: 'First name'
       th text: 'Role'
+      th
     end
   end
 
@@ -68,12 +69,17 @@ class Admin::Pages::Persons::Index < Matestack::Ui::Page
         end
         td text: person.first_name
         td text: person.role
+        td class: 'text-right' do
+          action delete_person_config(person) do
+            button text: 'Delete', class: 'btn btn-outline-primary'
+          end
+        end
       end
     end
   end
 
   def paginator
-    ul class: 'pagination' do
+    ul class: 'pagination justify-content-center' do
       li class: 'page-item' do
         collection_content_previous do
           button class: 'page-link', text: 'previous'
@@ -92,6 +98,20 @@ class Admin::Pages::Persons::Index < Matestack::Ui::Page
         end
       end
     end
+  end
+
+
+  def delete_person_config(person)
+    {
+      method: :delete,
+      path: admin_person_path(person),
+      success: {
+        emit: 'persons-collection-update'
+      },
+      confirm: {
+        text: "Do you really want to delete '#{person.first_name} #{person.last_name}'?"
+      }
+    }
   end
 
 end
