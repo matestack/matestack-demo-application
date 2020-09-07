@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/matestack/matestack-ui-core.git
-  revision: 0d0651dd0a6d83843c25720ce1698761c476b764
-  branch: 20200824_use-html-attributes-and-properties-everywhere
+  revision: b16407739245609caf1a3d9e142c0ea6dc51fae5
+  branch: master
   specs:
     matestack-ui-core (1.0.0.rc.1)
       cells-haml
@@ -70,9 +70,9 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    bcrypt (3.1.13)
+    bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.4.6)
+    bootsnap (1.4.8)
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
@@ -121,7 +121,7 @@ GEM
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.6.0)
+    loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -132,15 +132,15 @@ GEM
     mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.14.1)
+    minitest (5.14.2)
     msgpack (1.3.3)
-    nio4r (2.5.2)
+    nio4r (2.5.3)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.2.3)
-    public_suffix (4.0.5)
-    puma (4.3.5)
+    public_suffix (4.0.6)
+    puma (4.3.6)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
@@ -195,7 +195,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    spring (2.1.0)
+    spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
@@ -212,15 +212,12 @@ GEM
     tilt (2.0.10)
     trailblazer-cells (0.0.3)
       cells (>= 4.1.0.rc1, < 5.0.0)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uber (0.1.0)
-    warden (1.2.8)
-      rack (>= 2.0.6)
-    web-console (4.0.3)
+    warden (1.2.9)
+      rack (>= 2.0.9)
+    web-console (4.0.4)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
@@ -229,7 +226,7 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (>= 3.0, < 4.0)
-    webpacker (4.2.2)
+    webpacker (4.3.0)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
@@ -258,7 +255,6 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
-  turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
@@ -268,4 +264,4 @@ RUBY VERSION
    ruby 2.6.5p114
 
 BUNDLED WITH
-   1.17.3
+   2.1.4
