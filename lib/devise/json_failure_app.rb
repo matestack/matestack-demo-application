@@ -1,4 +1,4 @@
-class DeviseFailure < Devise::FailureApp
+class JsonFailureApp < Devise::FailureApp
 
   def respond
     return super unless request.content_type == 'application/json'

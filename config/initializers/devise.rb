@@ -1,4 +1,4 @@
-require "#{Rails.root}/lib/devise/devise_failure"
+require "#{Rails.root}/lib/devise/json_failure_app"
 
 # frozen_string_literal: true
 
@@ -281,7 +281,7 @@ Devise.setup do |config|
   #
   config.warden do |manager|
     # manager.intercept_401 = true
-    manager.failure_app = DeviseFailure
+    manager.failure_app = JsonFailureApp
   end
 
   # ==> Mountable engine configurations
