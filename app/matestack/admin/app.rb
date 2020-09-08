@@ -13,7 +13,7 @@ class Admin::App < Matestack::Ui::App
 
   def navigation
     nav class: 'navbar navbar-expand-md navbar-dark bg-dark fixed-top' do
-      transition class: 'navbar-brand font-weight-bold', path: root_path, text: 'AdminApp', delay: 300
+      transition class: 'navbar-brand font-weight-bold', path: admin_root_path, text: 'AdminApp', delay: 300
       if admin_signed_in?
         navbar_toggle_button
         div id: 'navbar', class: 'collapse navbar-collapse justify-content-end' do
@@ -78,7 +78,7 @@ class Admin::App < Matestack::Ui::App
 
   def logout_action_config
     {
-      method: :delete,
+      method: :get,
       path: destroy_admin_session_path,
       success: {
         redirect: {
