@@ -1,24 +1,5 @@
-# README
+# Matestack CRUD demo application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Read our step by step tutorial in order to learn how to create a reactive web app in pure Ruby: https://docs.matestack.io/docs/guides/100-tutorial/README.md
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Deployed here: https://demo.matestack.io (hosted in Germany, may be slow outside of Europe due to network latency)
